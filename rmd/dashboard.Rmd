@@ -1,0 +1,25 @@
+---
+title: "StandaloneApp"
+date: '`r format(Sys.Date(), format="%d-%b-%Y")`'
+
+output:
+  flexdashboard::flex_dashboard:
+    css: styles.css
+    theme: cerulean
+    vertical_layout: fill
+    orientation: rows
+runtime: shiny
+---
+
+
+```{r}
+library(here)
+source(paste0(here::here(),"/src/functions.R"))
+
+
+csv_data <- giveMeFlow(paste0(here::here(),"/data/in.csv"))
+```
+
+
+```{r child = 'pages/home.Rmd'}
+```

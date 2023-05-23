@@ -1,0 +1,26 @@
+Give me flow {data-orientation=columns} 
+===================================== 
+
+Column{.sidebar data-width=200}
+-------------------------------------
+```{r}
+
+sliderInput("row", label = "Selecciona línea:",
+            min = 1, max = nrow(csv_data), value = 1, step = 1)
+
+```
+
+
+Column{data-width=280}
+-------------------------------------
+### The flow
+```{r}
+renderUI({
+toPrint <- ""
+for(element in csv_data[input$row,]){
+  toPrint <- paste(toPrint, element)
+}
+    
+toPrint
+})
+```
